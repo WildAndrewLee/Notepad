@@ -1,0 +1,35 @@
+html, body {
+    color: #333333;
+    height: 100%;
+}
+
+pre, code {
+    font-size: 14px !important;
+    font-family: "Inconsolata" !important;
+    height: 100%;
+}
+
+pre {
+    margin: 0px;
+    display: flex;
+    flex-flow: row;
+}
+
+code {
+    flex: 1 1 auto;
+    padding: 4px 7px !important;
+}
+
+#line_numbers {
+    margin: 0px;
+    padding: 4px 4px 4px 16px;
+    flex: 0 1 auto;
+    background: #F5F5F5;
+    border-right: 1px solid #E2E2E2;
+    color: #AAAAAA;
+}
+
+#line_numbers li {
+    display: block !important;
+    text-align: right !important;
+}
