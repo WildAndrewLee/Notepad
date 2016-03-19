@@ -17,7 +17,10 @@ for(var line = 1; line <= lines; line++){
     li.innerText = line;
     li.id = line;
 
-    if(line === line_number) li.classList.add('highlighted');
+    if(line === line_number){
+        li.classList.add('highlighted');
+        highlighted = li;
+    }
 
     (function(line, li){
         li.addEventListener('mousedown', function(){
