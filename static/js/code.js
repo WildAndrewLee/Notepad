@@ -51,6 +51,7 @@ var ctrl = false;
 document.body.addEventListener('keydown', function(e){
     if(e.which === 17) ctrl = true;
     if(e.which !== 97 && e.which !== 65) return;
+    if(!ctrl) return;
 
     e.preventDefault();
 
