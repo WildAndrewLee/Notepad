@@ -1,12 +1,13 @@
 html, body {
-    color: #333333;
     height: 100%;
+    color: #333333;
+    line-height: 15px;
 }
 
 pre, code {
-    font-size: 14px !important;
+    font-size: 13px !important;
     font-family: "Inconsolata" !important;
-    height: 100%;
+    min-height: 100%;
 }
 
 pre {
@@ -17,12 +18,12 @@ pre {
 
 code {
     flex: 1 1 auto;
-    padding: 4px 7px !important;
+    padding: 4px 4px 4px 4px !important;
 }
 
 #line_numbers {
     margin: 0px;
-    padding: 4px 4px 4px 16px;
+    padding: 5px 0px 4px 0px;
     flex: 0 1 auto;
     background: #F5F5F5;
     border-right: 1px solid #E2E2E2;
@@ -32,4 +33,27 @@ code {
 #line_numbers li {
     display: block !important;
     text-align: right !important;
+    padding: 0px 4px 0px 16px;
+    margin: 0px;
+    cursor: pointer;
+}
+
+#line_numbers li:hover {
+    color: #333333;
+}
+
+#line_numbers li.highlighted {
+    background: #4798C6;
+    color: #FFFFFF;
+    position: relative;
+}
+
+#line_numbers li.highlighted:after {
+    content: '';
+    position: absolute;
+    top: 0px;
+    right: -1px;
+    bottom: 0px;
+    width: 3px;
+    background: #417C9E;
 }

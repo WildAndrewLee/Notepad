@@ -1,17 +1,11 @@
 var textarea = document.getElementById('code_input');
 
-// textarea.addEventListener('keydown', update_lang);
-// textarea.addEventListener('change', update_lang);
+textarea.addEventListener('keydown', check_tab);
+// textarea.addEventListener('change', check_tab);
 
 document.querySelector('form').addEventListener('submit', process);
 
-function detect_lang(){
-    var code = textarea.value;
-    var result = hljs.highlightAuto(code);
-    return result.language;
-}
-
-function update_lang(e){
+function check_tab(e){
     // Check for tab key.
     // If a tab key is pressed put a tab character
     // into the code box instead of cycling to the next
@@ -26,6 +20,17 @@ function update_lang(e){
         textarea.value = textarea.value.substring(0, cursor) + '\t' + textarea.value.substring(cursor);
         textarea.selectionStart = textarea.selectionEnd = cursor + 1;
     }
+
+}
+
+function detect_lang(){
+    var code = textarea.value;
+    var result = hljs.highlightAuto(code);
+    return result.language;
+}
+
+function update_lang(e){
+    check_tab();
 
     var curr_lang = document.getElementById('current_lang');
     var lang = detect_lang();

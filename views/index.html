@@ -2,19 +2,20 @@
 <html>
     <head>
         <title>Notepad</title>
-        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans|Merriweather:300" rel="stylesheet" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet" />
         <link rel="stylesheet" href="/css/style.css" />
     </head>
     <body>
         <form action="/share" method="POST">
             <textarea name="code" id="code_input" required></textarea>
-            <aside>
+            <aside id="bottom_bar">
                 <span id="info">
                     <label>Detected Language:</label>
                     <span id="current_lang">None</span>
                 </span>
                 <input name="submit" type="submit" value="Share Code" />
+                <a href="/about" class="button">About</a>
             </asidev>
         </form>
         <script src="/js/main.js"></script>

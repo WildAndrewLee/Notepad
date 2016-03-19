@@ -1,9 +1,10 @@
+var crypto = require('crypto');
 var express = require('express');
 var Flake = require('flake-idgen');
 var handlebars = require('express-handlebars');
-var int_format = require('biguint-format');
-var multer = require('multer');
 var levelup = require('levelup');
+var multer = require('multer');
+var rate_limit = require('express-rate-limit');
 
 const PORT = 4646;
 const SNOWFLAKE = new Flake();
@@ -16,11 +17,22 @@ const MULT = multer();
 var db = levelup(__dirname + '/notepad_db')
 
 /*
+ * Setup rate limiter
+ */
+var limiter = rate_limit({
+    delayAfter: 0,
+    delayMs: 0,
+    max: 15, // 15 requests per minute
+    windowMs: 60000 // 1 minute
+});
+
+/*
  * Setup Express
  */
 
 var app = express();
 
+app.enable('trust proxy');
 app.use(express.static(__dirname + '/static'));
 app.engine('html', handlebars());
 app.set('view engine', 'html');
@@ -34,9 +46,18 @@ app.get('/', (req, resp) => {
     resp.render('index');
 });
 
-app.post('/share', MULT.array(), (req, resp) => {
+app.get('/about', (req, resp) => {
+    resp.render('about');
+});
+
+app.post('/share', limiter, MULT.array(), (req, resp) => {
     var code_submission = req.body.code;
-    var snowflake_id = int_format(SNOWFLAKE.next(), 'dec');
+    var snowflake_id = SNOWFLAKE.next();
+    snowflake_id = crypto.createHash('md5').update(snowflake_id).digest('hex');
+
+    // 8 character should be long enough since this is a
+    // fairly low use application.
+    snowflake_id = snowflake_id.substring(0, 8);
 
     db.put(snowflake_id, code_submission, (err) => {
         if(err){
@@ -67,7 +88,7 @@ app.get(/.+/, (req, resp) => {
 
     db.get(snowflake_id, (err, val) => {
         if(err){
-            resp.status(404).end();
+            resp.status(404).send('Error: Page not found.');
         }
         else{
             resp.render('code', {
