@@ -41,6 +41,11 @@ pre, code {
     margin-bottom: 0px;
 }
 
+.code {
+    font-family: "Inconsolata";
+    color: #bf616a;
+}
+
 form {
     display: flex;
     flex-flow: column;

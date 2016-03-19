@@ -13,7 +13,7 @@
             </header>
             <aside>
                 <p>
-                    Notepad is a lightweight copy-paste, code sharing, whatever you want host. Technologies we love are Node.js for its native async support and LevelDB for it's simple yet performant key-value storage.
+                    Notepad is a lightweight copy-paste, code snippet, whatever you want host. Technologies we love are Node.js for its native async support and LevelDB for it's simple yet performant key-value storage.
                 </p>
                 <p>
                     Everything you do on Notepad is completely anonymous. We don't keep any logs (except to rate-limit you of course). The current rate-limit on code sharing is 15 POST request every 60 seconds.
@@ -27,6 +27,8 @@
             </header>
             <aside>
                 <h2>Share Code</h2>
+                <p>
+                This endpoint allows you to share things on Notepad and returns a JSON object on success. The <span class="code">snowflake</span> attribute is an identifier used to lookup whatever you're sharing.
                 <pre><code>POST /share HTTP/1.1
 Content-Type: multipart/form-data
 Response-Type: application/json
