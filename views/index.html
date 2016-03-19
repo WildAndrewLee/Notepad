@@ -8,14 +8,10 @@
     </head>
     <body>
         <form action="/share" method="POST">
-            <textarea name="code" id="code_input" required></textarea>
-            <aside id="bottom_bar">
-                <span id="info">
-                    <label>Detected Language:</label>
-                    <span id="current_lang">None</span>
-                </span>
-                <input name="submit" type="submit" value="Share" />
+            <textarea name="code" id="code_input" required placeholder="// Paste Code Here"></textarea>
+            <aside id="buttons">
                 <a href="/about" class="button">About</a>
+                <input name="submit" type="submit" value="Share" />
             </aside>
         </form>
         <script src="/js/main.js"></script>
