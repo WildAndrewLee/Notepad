@@ -76,7 +76,7 @@ app.post('/share', limiter, MULT.array(), (req, resp) => {
             // that code was submitted by normal
             // HTTP request--neither XHR nor cURL.
             if(req.body.name){
-                resp.redirect('/' + snowflake_id);
+                resp.redirect('/' + snowflake_id + '/');
             }
             else{
                 resp.json({
@@ -87,8 +87,9 @@ app.post('/share', limiter, MULT.array(), (req, resp) => {
     });
 });
 
-app.get(/.+/, (req, resp) => {
-    var snowflake_id = req.originalUrl.substring(1);
+app.get('/:snowflake/:lang?', (req, resp) => {
+    var snowflake_id = req.params.snowflake;
+    var lang = req.params.lang;
 
     db.get(snowflake_id, (err, val) => {
         if(err){
@@ -97,7 +98,8 @@ app.get(/.+/, (req, resp) => {
         else{
             resp.render('code', {
                 snowflake: snowflake_id,
-                code: val
+                code: val,
+                lang: lang || ''
             });
         }
     });
