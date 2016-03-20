@@ -50,6 +50,10 @@ app.get('/about', (req, resp) => {
     resp.render('about');
 });
 
+app.get('/api', (req, resp) => {
+    resp.render('api');
+});
+
 app.post('/share', limiter, MULT.array(), (req, resp) => {
     var code_submission = req.body.code;
     var snowflake_id = SNOWFLAKE.next();

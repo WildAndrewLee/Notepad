@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>API Documentation</title>
+        <link href="https://fonts.googleapis.com/css?family=Inconsolata|Open+Sans:400,600,700|Merriweather:300" rel="stylesheet" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="/css/style.css" />
+    </head>
+    <body>
+        <div id="wrapper">
+            <nav>
+                <a href="/">Share Something</a>
+                <a href="/about">About Notepad</a>
+                <a class="selected" href="/api">RESTful API</a>
+            </nav>
+            <header>
+                <h1>API Documentation</h1>
+                <p>
+                    Notepad utilizes a RESTful API. The API's routes are as follows:
+                </p>
+            </header>
+            <aside>
+                <h2>Share Code</h2>
+                <p>
+                This endpoint allows you to share things on Notepad and returns a JSON object on success. The <span class="code">snowflake</span> attribute is an identifier used to lookup whatever you're sharing. Snowflakes are <strong>practically unique</strong>.
+                <pre><code>POST /share HTTP/1.1
+Content-Type: multipart/form-data
+Response-Type: application/json
+Payload: code=[string]</code></pre>
+                <h3>Example Call</h3>
+                <pre><code>curl -F "code=$(cat snippet.js)" https://notepad.somoe.moe/share</code></pre>
+                <h3>Example Response</h3>
+                <pre><code>{
+    "snowflake": [string]
+}</code></pre>
+        </div>
+    </section>
+    </body>
+</html>

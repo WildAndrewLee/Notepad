@@ -9,6 +9,10 @@ html, body {
     overflow: hidden;
 }
 
+b {
+    font-weight: 600;
+}
+
 a {
     text-decoration: none;
     color: #5294E2;
@@ -18,11 +22,49 @@ a:hover {
     border-bottom: 1px solid #5294E2;
 }
 
+nav {
+    border-top: 1px solid #CCCCCC;
+    border-bottom: 1px solid #CCCCCC;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin: 36px 0px;
+}
+
+nav a {
+    padding: 12px 14px;
+    color: #999999;
+    position: relative;
+    display: inline-block;
+}
+
+nav a:hover, nav a.selected {
+    color: #333333;
+    border: none;
+}
+
+nav a:hover:after, nav a.selected:after {
+    position: absolute;
+    content: '';
+    width: 100%;
+    bottom: -1px;
+    left: 0px;
+    height: 1px;
+    background: #5294E2;
+}
+
+nav a + a {
+    margin-left: -6px;
+}
+
 h1, h2, h3 {
     padding: 0px;
     font-weight: 300;
     font-family: "Merriweather";
-    border-bottom: 1px solid #DDDDDD;
+}
+
+h1 {
+    font-size: 36px;
+    margin-bottom: 0px;
 }
 
 h3 {
