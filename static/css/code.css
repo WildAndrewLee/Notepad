@@ -23,9 +23,9 @@ code {
 
 #line_numbers {
     margin: 0px;
-    padding: 5px 0px 4px 0px;
+    padding: 4px 0px 4px 0px;
     flex: 0 1 auto;
-    background: #F5F5F5;
+    background: #FCFCFC;
     border-right: 1px solid #E2E2E2;
     color: #AAAAAA;
 }
